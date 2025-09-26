@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Planner Minimal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+    <div id="password-screen">
+        <h2>🔒 Privacy Planner</h2>
+        <p id="password-info">Geben Sie Ihr Master-Passwort ein, um Daten zu entsperren/festzulegen.</p>
+        <input type="password" id="master-password" placeholder="Master-Passwort">
+        <button onclick="APP.initApp()">Entsperren / Festlegen</button>
+    </div>
+
+    <div id="main-content" style="display:none;">
+        <header>
+            <button id="mode-toggle" onclick="APP.toggleMode()">☀️</button>
+            <button id="save-button" onclick="APP.saveData()">💾 Speichern</button>
+        </header>
+
+        <div class="column">
+            <h2>⏱️ Fokus-Tracker</h2>
+            <div id="timer-display">00:00:00</div>
+            <input type="text" id="timer-name" placeholder="Name der Session">
+            <button onclick="TIMER.startStop()">Start</button>
+            <button onclick="TIMER.saveSession()">Session beenden & Speichern</button>
+            
+            <h3>Protokoll (<span id="tracked-time-count">0</span> Sessions)</h3>
+            <ul id="session-log"></ul>
+        </div>
+
+        <div class="column">
+            <h2>✅ Aufgaben</h2>
+            <input type="text" id="todo-input" placeholder="Neue Aufgabe">
+            <button onclick="TODO.add()">Hinzufügen</button>
+            
+            <div id="todo-list"></div>
+            
+            <h3 style="margin-top: 20px;">😌 Tages-Stimmung</h3>
+            <input type="range" min="1" max="5" value="3" class="slider" id="mood-slider">
+            <span id="mood-output">Neutral (3/5)</span>
+        </div>
+
+        <div class="column">
+            <h2>📝 Notizen</h2>
+            <textarea id="notes-input" placeholder="Ihre Notizen hier..."></textarea>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
